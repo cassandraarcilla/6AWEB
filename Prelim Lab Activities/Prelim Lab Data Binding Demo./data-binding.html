@@ -1,0 +1,16 @@
+<!-- data-binding.component.html -->
+<div class="data-binding-container">
+  <h2>Explore Data Binding</h2>
+
+  <div class="data-binding-demo">
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" [(ngModel)]="userName" placeholder="Enter name" />
+    <p>Your name is: {{ userName }}</p>
+  </div>
+
+  <div class="binding-note">
+    <p>
+      This example demonstrates two-way data binding using Angular's ngModel directive.
+    </p>
+  </div>
+</div>

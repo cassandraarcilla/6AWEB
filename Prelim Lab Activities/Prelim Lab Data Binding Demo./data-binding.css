@@ -1,0 +1,127 @@
+/* Overall container styling */
+.data-binding-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.data-binding-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+/* Interpolation - Dynamic Text */
+.dynamic-text {
+  font-size: 20px;
+  color: #333;
+  padding: 10px;
+}
+
+.dynamic-text.highlight {
+  color: #007bff; /* Highlighted text color */
+  font-weight: bold;
+}
+
+/* Property Binding - Image Styling */
+.dynamic-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Class Binding - Active/Inactive Button */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.active {
+  background-color: #28a745; /* Green for active */
+  color: white;
+}
+
+button.inactive {
+  background-color: #dc3545; /* Red for inactive */
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Style Binding - Dynamic Text Styles */
+.dynamic-style {
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* General Styling for Labels */
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+/* Input field styling for dynamic binding */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ced4da;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Button and input field for better spacing */
+button, input[type="text"] {
+  display: block;
+  margin: 10px auto;
+}
+
+/* Mobile responsiveness - Adjustments for smaller screens */
+@media (max-width: 600px) {
+  .data-binding-container {
+    padding: 15px;
+  }
+
+  .dynamic-text {
+    font-size: 18px;
+  }
+
+  .dynamic-image {
+    max-width: 100%;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .dynamic-style {
+    font-size: 16px;
+  }
+}
