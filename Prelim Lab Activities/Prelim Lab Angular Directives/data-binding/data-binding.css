@@ -1,0 +1,191 @@
+/* General Styles for the DataBinding Component */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+  padding: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main Container */
+.app-data-binding {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  min-height: calc(100vh - 40px);
+}
+
+/* Glow background animation */
+.app-data-binding::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+}
+
+/* Title Styling */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: #fff;
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 1;
+}
+
+/* Image */
+img {
+  display: block;
+  margin: 30px auto;
+  max-width: 180px;
+  border-radius: 50%;
+  border: 5px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 20px rgba(95,10,135,0.4);
+  transition: 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 30px rgba(95,10,135,0.6);
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.2rem;
+  color: #f0e6ff;
+  line-height: 1.7;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Highlighted paragraph */
+p.highlighted {
+  background: rgba(255,255,255,0.25);
+  border-left: 5px solid #a4508b;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(95,10,135,0.3);
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+p.highlighted:hover {
+  transform: translateY(-2px);
+}
+
+/* Input Container */
+.input-container {
+  margin: 30px auto;
+  max-width: 450px;
+}
+
+/* Input Field */
+input {
+  padding: 15px 20px;
+  width: 100%;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #a4508b;
+  box-shadow: 0 0 15px rgba(95,10,135,0.5);
+  outline: none;
+  background: rgba(255,255,255,0.25);
+}
+
+/* Buttons */
+button {
+  padding: 15px 35px;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  background: linear-gradient(135deg, #5f0a87, #a4508b);
+  color: white;
+  box-shadow: 0 6px 15px rgba(95,10,135,0.4);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #7f29a3, #c46cb5);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(95,10,135,0.5);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* Count display */
+p.count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 18px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 15px;
+  border: 2px solid rgba(255,255,255,0.4);
+  box-shadow: 0 5px 12px rgba(95,10,135,0.3);
+  display: inline-block;
+  min-width: 180px;
+}
+
+/* Decorative circles */
+.decoration {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(95,10,135,0.3) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.decoration:nth-child(1) { top: -50px; left: -50px; }
+.decoration:nth-child(2) { bottom: -50px; right: -50px; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 { font-size: 2.2rem; }
+  .app-data-binding { padding: 25px; margin: 20px; }
+  button { width: 100%; margin: 10px 0; }
+  input { font-size: 16px; }
+  img { max-width: 140px; }
+  p.count { font-size: 1.6rem; min-width: 150px; }
+}
