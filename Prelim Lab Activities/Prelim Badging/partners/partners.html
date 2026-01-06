@@ -1,0 +1,54 @@
+<!-- HERO WITH DIRECTIVE -->
+<section class="hero" [ngClass]="{ 'scrolled': isScrolled }">
+  <div class="hero-content">
+    <h1>Our Partners</h1>
+    <p>
+      You can achieve a very impressive effect by using our animated navbar,
+      which is transparent on start, and changes the color after the scroll.
+    </p>
+    <button class="btn">Become a Sponsor</button>
+  </div>
+</section>
+
+<main>
+  <h2 class="section-title">
+    Below are our Corporate Partners
+  </h2>
+
+  <!-- TABLE WITH *ngFor -->
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Trademark</th>
+        <th>Sponsorship</th>
+        <th>Go to Website</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of partners">
+        <td>{{ p.name }}</td>
+
+        <td>
+          <img [src]="p.logo" [alt]="p.name">
+        </td>
+
+        <td>
+          <span
+            class="badge"
+            [ngClass]="p.level.toLowerCase()"
+          >
+            {{ p.level }}
+          </span>
+        </td>
+
+        <td>
+          <a [href]="p.website" target="_blank">
+            View website
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
