@@ -1,0 +1,44 @@
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="overlay">
+    <h1>About the Organization</h1>
+    <p>
+      Learn how the team and committee leadership are shaping the world
+      of conferences, get the latest conference news and updates on our blog,
+      and contact us for guidance.
+    </p>
+
+    <!-- EVENT BINDING -->
+    <button (click)="toggleInfo()">
+      {{ buttonText }}
+    </button>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main>
+  <section class="about-content">
+    <h2>About</h2>
+
+    <p>
+      We believe in transparency, cooperation globally, and the free exchange
+      of talent and ideas. A forum for the sharing of these technical and
+      humanitarian discussions is given for meetings, conferences and other
+      events.
+    </p>
+
+    <!-- CONDITIONAL CONTENT -->
+    <div *ngIf="showMore" class="extra">
+      <p>
+        Conferences are a part of the legacy of this organization and continue
+        today to be a catalyst for creativity. We are committed to developing
+        strategies that support and expand conference activities throughout
+        the world.
+      </p>
+
+      <button class="gift-btn">
+        Click here to get a FREE Gift!
+      </button>
+    </div>
+  </section>
+</main>
