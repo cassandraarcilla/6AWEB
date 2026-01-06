@@ -1,1 +1,32 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-box">
+    <h1>{{ title }}</h1>
+    <p>{{ subtitle }}</p>
+    <span class="cta">{{ cta }}</span>
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<main>
+  <h2 class="headline">
+    Join our Research Conferences around the Globe!
+  </h2>
+
+  <div class="card-grid">
+    <article class="card" *ngFor="let conf of conferences">
+
+      <!-- IMAGE AS LINK -->
+      <a [href]="conf.link" target="_blank">
+        <img [src]="conf.image" [alt]="conf.country">
+      </a>
+
+      <div class="card-body">
+        <h3>{{ conf.country }}</h3>
+        <p class="desc">{{ conf.description }}</p>
+        <p class="topic">{{ conf.topic }}</p>
+      </div>
+    </article>
+  </div>
+</main>
 
