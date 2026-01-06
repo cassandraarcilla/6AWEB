@@ -1,0 +1,48 @@
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="overlay">
+    <h1>Join Our Mailing List!</h1>
+    <p>
+      Join and meet thousands of academicians around the globe and stay updated!
+    </p>
+    <button>Click here to JOIN!</button>
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<main>
+  <h2>Fill the form below:</h2>
+
+  <form (ngSubmit)="submitForm()">
+
+    <label>
+      Firstname:
+      <input type="text" [(ngModel)]="firstName" name="firstName">
+    </label>
+
+    <label>
+      Lastname:
+      <input type="text" [(ngModel)]="lastName" name="lastName">
+    </label>
+
+    <label>
+      Fullname:
+      <input type="text" [value]="fullName" disabled>
+    </label>
+
+    <label>
+      Enter Email Address:
+      <input type="email" [(ngModel)]="email" name="email">
+    </label>
+
+    <label>
+      Enter Institution/Affiliation:
+      <input type="text" [(ngModel)]="institution" name="institution">
+    </label>
+
+    <button type="submit" class="submit-btn">
+      Submit
+    </button>
+
+  </form>
+</main>
