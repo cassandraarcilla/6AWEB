@@ -1,0 +1,85 @@
+<h2 style="text-align:center">Angular Pipes Demo</h2>
+
+<!-- DatePipe -->
+<section>
+  <h3>DatePipe Examples</h3>
+  <p>Current Date & Time: {{ presentDate | date:'medium' }}</p>
+  <p>Short Date: {{ presentDate | date:'shortDate' }}</p>
+  <p>Full Date: {{ presentDate | date:'fullDate' }}</p>
+  <p>Custom Format (M/dd/yyyy): {{ presentDate | date:'M/dd/yyyy' }}</p>
+  <p>Time (hours & minutes): {{ presentDate | date:'h:mm a' }}</p>
+</section>
+
+<hr>
+
+<!-- Chained pipes -->
+<section>
+  <h3>ChainedPipes Examples</h3>
+  <p>Uppercase Date: {{ presentDate | date:'fullDate' | uppercase }}</p>
+  <p>Lowercase Date: {{ presentDate | date:'medium' | lowercase }}</p>
+</section>
+
+<hr>
+<!-- AsyncPipe -->
+<section>
+  <h3>AsyncPipe Example (Live Time)</h3>
+  <p>Live Time: {{ time$ | async | date:'mediumTime' }}</p>
+</section>
+
+<hr>
+
+<!-- CurrencyPipe -->
+<section>
+  <h3>CurrencyPipe Examples</h3>
+  <p>Price in USD: {{ price | currency:'USD' }}</p>
+  <p>Price in INR: {{ price | currency:'INR' }}</p>
+</section>
+
+<hr>
+
+<!-- SlicePipe -->
+<section>
+  <h3>SlicePipe Examples</h3>
+  <p>All Fruits: {{ fruits }}</p>
+  <p>Start index 2: {{ fruits | slice:2 }}</p>
+  <p>Start 1, End 4: {{ fruits | slice:1:4 }}</p>
+  <p>Negative index -2: {{ fruits | slice:-2 }}</p>
+  <p>Negative start & end (-4 to -2): {{ fruits | slice:-4:-2 }}</p>
+</section>
+
+<hr>
+
+<!-- DecimalPipe -->
+<section>
+  <h3>DecimalPipe Examples</h3>
+  <p>Decimal 1 (min 1 int, 2–4 fraction): {{ decimalNum1 | number:'1.2-4' }}</p>
+  <p>Decimal 2 (min 1 int, 0–2 fraction): {{ decimalNum2 | number:'1.0-2' }}</p>
+</section>
+
+<hr>
+
+<!-- PercentPipe -->
+<section>
+  <h3>PercentPipe Example</h3>
+  <p>Percent Value: {{ percentValue | percent:'1.1-2' }}</p>
+</section>
+
+<hr>
+
+<!-- TitleCasePipe -->
+<section>
+  <h3>TitleCasePipe Example</h3>
+  <p>{{ sampleText | titlecase }}</p>
+</section>
+
+<hr>
+
+<!-- KeyValuePipe -->
+<section>
+  <h3>KeyValuePipe Example</h3>
+  <ul>
+    <li *ngFor="let item of person | keyvalue">
+      {{ item.key }}: {{ item.value }}
+    </li>
+  </ul>
+</section>
