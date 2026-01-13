@@ -1,0 +1,87 @@
+/* ===== Global Page Styling ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 20px;
+  color: #2c3e50;
+}
+
+/* ===== Main Title ===== */
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #1f3a63;
+  letter-spacing: 1px;
+}
+
+/* ===== Section / Card Styling ===== */
+section {
+  background: #ffffff;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 8px solid #3498db; /* Default color */
+}
+
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Section Headings ===== */
+section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #1f3a63;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 4px;
+}
+
+/* ===== Paragraph Styling ===== */
+section p {
+  font-size: 1rem;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* ===== Lists for KeyValuePipe ===== */
+section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+section ul li {
+  background: #ecf0f1;
+  margin: 6px 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+section ul li:hover {
+  background: #d0d7de;
+}
+
+/* ===== Horizontal Rules ===== */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #d0d7de;
+  margin: 30px 0;
+}
+
+/* ===== Pipe Specific Accent Colors (3 main colors) ===== */
+section:nth-of-type(1),
+section:nth-of-type(2),
+section:nth-of-type(3) { border-left-color: #3498db; }  /* Blue for Date, Async, Chained */
+section:nth-of-type(4),
+section:nth-of-type(5) { border-left-color: #e67e22; }  /* Orange for Currency, Slice */
+section:nth-of-type(6),
+section:nth-of-type(7),
+section:nth-of-type(8),
+section:nth-of-type(9) { border-left-color: #2ecc71; }  /* Green for Decimal, Percent, TitleCase, KeyValue */
