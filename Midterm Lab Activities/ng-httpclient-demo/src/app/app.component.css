@@ -1,0 +1,95 @@
+/* General page styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Page header */
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+h2 {
+  margin-top: 40px;
+  color: #34495e;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Table header */
+thead th {
+  background-color: #3498db;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+}
+
+/* Table body */
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive table */
+@media screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #555;
+  }
+}
+
+/* Image styling for recipe table */
+.recipe-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}

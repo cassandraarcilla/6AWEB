@@ -1,0 +1,43 @@
+<h1>Hello, ng-httpclient-demo</h1>
+
+<h2>List from Main (Users)</h2>
+
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of httpusers; trackBy: trackById">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.website || 'N/A' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Recipe Table</h2>
+
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Ingredients</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let recipe of recipes; trackBy: trackById">
+      <td>{{ recipe.id }}</td>
+      <td>{{ recipe.name }}</td>
+      <td>{{ recipe.ingredients }}</td>
+    </tr>
+  </tbody>
+</table>
