@@ -1,0 +1,130 @@
+/* ----------------------
+   Global & body
+----------------------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #e0f7f7; /* light turquoise background */
+  color: #04395e; /* dark blue text */
+}
+
+/* ----------------------
+   Navbar
+----------------------- */
+nav {
+  background: linear-gradient(90deg, #0d6efd, #20c997); /* blue -> green */
+  padding: 12px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 15%);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+nav a.active {
+  background-color: white;
+  color: #04395e;
+}
+
+/* ----------------------
+   Headings
+----------------------- */
+h1, h2, h3 {
+  color: #04395e;
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+/* ----------------------
+   Cards / List items
+----------------------- */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: white;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+
+/* ----------------------
+   Inputs
+----------------------- */
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #20c997;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-color: #0d6efd;
+  outline: none;
+}
+
+/* ----------------------
+   Buttons
+----------------------- */
+button {
+  background-color: #20c997;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0d6efd;
+  transform: scale(1.05);
+}
+
+/* ----------------------
+   Form labels
+----------------------- */
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+/* ----------------------
+   Form Preview / Typography
+----------------------- */
+h2 + p, h2 + div {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-style: italic;
+  color: #04395e;
+}
