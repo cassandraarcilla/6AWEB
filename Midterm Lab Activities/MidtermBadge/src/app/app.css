@@ -1,0 +1,158 @@
+/* ----------------------
+   Global & Body
+----------------------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #e0f7f7; /* light turquoise background */
+  color: #04395e; /* dark blue text */
+}
+
+/* ----------------------
+   Navbar
+----------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* brand left, links right */
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #20c997; /* green */
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  margin-left: 24px;
+  font-weight: 600;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.nav-links a:hover {
+  color: #0d6efd; /* blue hover */
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
+}
+
+/* ----------------------
+   Headings
+----------------------- */
+h1, h2, h3 {
+  color: #04395e;
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+/* ----------------------
+   Cards / List Items
+----------------------- */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: white;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+
+/* ----------------------
+   Inputs & Textareas
+----------------------- */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #20c997;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #0d6efd;
+  outline: none;
+}
+
+/* ----------------------
+   Buttons
+----------------------- */
+button {
+  background-color: #20c997;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0d6efd;
+  transform: scale(1.05);
+}
+
+/* ----------------------
+   Form Labels
+----------------------- */
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+/* ----------------------
+   Form / Page Container
+----------------------- */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* ----------------------
+   Form Preview
+----------------------- */
+.preview {
+  margin-top: 24px;
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+
+.preview h2 {
+  margin-top: 0;
+}
+
+h2 + p, h2 + div {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-style: italic;
+  color: #04395e;
+}
