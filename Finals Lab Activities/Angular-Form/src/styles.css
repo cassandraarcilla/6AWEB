@@ -1,0 +1,39 @@
+/* ============================================================
+   Global Styles — Angular Forms (Combined App)
+   Palette: #F8B195  #F67280  #C06C84  #6C5B7B  #355C7D
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --peach:     #F8B195;
+  --coral:     #F67280;
+  --mauve:     #C06C84;
+  --purple:    #6C5B7B;
+  --deep-blue: #355C7D;
+  --text:      #fdf0ea;
+  --muted:     #b8a09a;
+  --input-bg:  rgba(53, 92, 125, 0.45);
+  --card-bg:   rgba(30, 58, 82, 0.85);
+  --border:    rgba(248, 177, 149, 0.2);
+  --radius:    10px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 10% 10%, rgba(246,114,128,0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 90%, rgba(108,91,123,0.20) 0%, transparent 50%),
+    linear-gradient(160deg, #355C7D 0%, #2a3d5c 60%, #1e2d45 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
