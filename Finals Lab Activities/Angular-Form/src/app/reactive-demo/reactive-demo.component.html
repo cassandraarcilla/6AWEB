@@ -1,0 +1,193 @@
+<!-- =====================================================
+     Reactive Form — reactive-demo.component.html
+     Using: FormBuilder, FormGroup, Validators, formControlName
+     ===================================================== -->
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="page-header">
+    <span class="badge">Angular · Reactive Form</span>
+    <h1>User <span class="accent">Registration</span></h1>
+    <p class="subtitle">Fill out the form below. All starred fields are required.</p>
+  </header>
+
+  <!-- ════════════════════════════════════
+       FORM
+  ════════════════════════════════════ -->
+  <div class="card" *ngIf="!submitted">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- ── Section: Account Info ── -->
+      <div class="section-title">Account Info</div>
+      <div class="form-grid">
+
+        <!-- Username -->
+        <div class="field full"
+             [class.invalid]="isInvalid('username')"
+             [class.valid]="isValid('username')">
+          <label for="username">Username <span class="req">*</span></label>
+          <input type="text"
+                 id="username"
+                 formControlName="username"
+                 placeholder="4–12 chars (letters, numbers, _)" />
+          <span class="err" *ngIf="hasError('username','required')">
+            ⚠ Username is required.
+          </span>
+          <span class="err" *ngIf="hasError('username','pattern')">
+            ⚠ 4–12 chars (letters / numbers / _).
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="field"
+             [class.invalid]="isInvalid('email')"
+             [class.valid]="isValid('email')">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email"
+                 id="email"
+                 formControlName="email"
+                 placeholder="Enter a valid email" />
+          <span class="err" *ngIf="hasError('email','required')">
+            ⚠ Email is required.
+          </span>
+          <span class="err" *ngIf="hasError('email','email')">
+            ⚠ Enter a valid email address.
+          </span>
+        </div>
+
+        <!-- Password -->
+        <div class="field"
+             [class.invalid]="isInvalid('password')"
+             [class.valid]="isValid('password')">
+          <label for="password">Password <span class="req">*</span></label>
+          <input type="password"
+                 id="password"
+                 formControlName="password"
+                 placeholder="Min 8 chars, upper, lower, number" />
+          <span class="err" *ngIf="hasError('password','required')">
+            ⚠ Password is required.
+          </span>
+          <span class="err" *ngIf="hasError('password','pattern')">
+            ⚠ Min 8 chars with upper, lower &amp; number.
+          </span>
+        </div>
+
+        <!-- Role -->
+        <div class="field full"
+             [class.invalid]="isInvalid('role')"
+             [class.valid]="isValid('role')">
+          <label for="role">Role <span class="req">*</span></label>
+          <select id="role" formControlName="role">
+            <option value="" disabled>Select role…</option>
+            <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+          </select>
+          <span class="err" *ngIf="hasError('role','required')">
+            ⚠ Please select a role.
+          </span>
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <!-- ── Section: Additional ── -->
+      <div class="section-title" style="margin-top:28px;">Additional Information</div>
+      <div class="form-grid">
+
+        <!-- Gender — Radio Buttons -->
+        <div class="field full"
+             [class.invalid]="isInvalid('gender')">
+          <label>Gender <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option"
+                   *ngFor="let g of genders"
+                   [class.selected]="form.get('gender')?.value === g">
+              <input type="radio"
+                     name="gender"
+                     [value]="g"
+                     (change)="form.get('gender')?.setValue(g); form.get('gender')?.markAsTouched()" />
+              <span>{{ g }}</span>
+            </label>
+          </div>
+          <span class="err" *ngIf="isInvalid('gender')">
+            ⚠ Please select a gender.
+          </span>
+        </div>
+
+        <!-- Status — Select -->
+        <div class="field full"
+             [class.invalid]="isInvalid('status')"
+             [class.valid]="isValid('status')">
+          <label for="status">Employment Status <span class="req">*</span></label>
+          <select id="status" formControlName="status">
+            <option value="" disabled>Select status…</option>
+            <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+          </select>
+          <span class="err" *ngIf="hasError('status','required')">
+            ⚠ Please select an employment status.
+          </span>
+        </div>
+
+        <!-- Comments — Textarea -->
+        <div class="field full">
+          <label for="comments">Comments / Notes</label>
+          <textarea id="comments"
+                    formControlName="comments"
+                    placeholder="Any additional notes or comments…"
+                    rows="4"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <div class="field full">
+          <button type="submit" class="btn-submit" [disabled]="form.invalid">
+            Submit Registration
+          </button>
+        </div>
+
+      </div><!-- /form-grid -->
+
+    </form>
+
+  </div><!-- /card -->
+
+  <!-- ════════════════════════════════════
+       SUCCESS STATE
+  ════════════════════════════════════ -->
+  <div class="card success-card" *ngIf="submitted">
+
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">Registration Submitted!</h2>
+    <p class="success-sub">Here's a summary of what was entered:</p>
+
+    <div class="preview-grid">
+      <div class="preview-item">
+        <span class="preview-label">Username</span>
+        <span class="preview-val">{{ form.value.username }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Email</span>
+        <span class="preview-val">{{ form.value.email }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Role</span>
+        <span class="preview-val">{{ form.value.role }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Gender</span>
+        <span class="preview-val">{{ form.value.gender }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Status</span>
+        <span class="preview-val">{{ form.value.status }}</span>
+      </div>
+      <div class="preview-item full">
+        <span class="preview-label">Comments</span>
+        <span class="preview-val">{{ form.value.comments || '—' }}</span>
+      </div>
+    </div>
+
+    <button class="btn-reset" (click)="reset()">← Submit Another</button>
+
+  </div>
+
+</div><!-- /page -->
