@@ -1,0 +1,197 @@
+<!-- =====================================================
+     Template-Driven Form — template-demo.component.html
+     Using: ngForm, ngModel, two-way binding, validators
+     ===================================================== -->
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="page-header">
+    <span class="badge">Angular · Template-Driven</span>
+    <h1>User <span class="accent">Registration</span></h1>
+    <p class="subtitle">Fill out the form below. All starred fields are required.</p>
+  </header>
+
+  <!-- FORM -->
+  <div class="card" *ngIf="!submitted">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- Section: Account -->
+      <div class="section-title">Account Info</div>
+      <div class="form-grid">
+
+        <!-- Username -->
+        <div class="field full"
+             [class.invalid]="username_f.invalid && username_f.touched"
+             [class.valid]="username_f.valid && username_f.touched">
+          <label for="username">Username <span class="req">*</span></label>
+          <input type="text" id="username" name="username"
+                 [(ngModel)]="username" #username_f="ngModel"
+                 placeholder="Enter username" required />
+          <span class="err" *ngIf="username_f.invalid && username_f.touched">
+            ⚠ Username is required.
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="field"
+             [class.invalid]="email_f.invalid && email_f.touched"
+             [class.valid]="email_f.valid && email_f.touched">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email"
+                 [(ngModel)]="email" #email_f="ngModel"
+                 placeholder="Enter email" required email />
+          <span class="err" *ngIf="email_f.invalid && email_f.touched">
+            ⚠ A valid email is required.
+          </span>
+        </div>
+
+        <!-- Password -->
+        <div class="field"
+             [class.invalid]="password_f.invalid && password_f.touched"
+             [class.valid]="password_f.valid && password_f.touched">
+          <label for="password">Password <span class="req">*</span></label>
+          <input type="password" id="password" name="password"
+                 [(ngModel)]="password" #password_f="ngModel"
+                 placeholder="Enter password" required minlength="6" />
+          <span class="err" *ngIf="password_f.invalid && password_f.touched">
+            ⚠ Password must be at least 6 characters.
+          </span>
+        </div>
+
+        <!-- Role -->
+        <div class="field full"
+             [class.invalid]="role_f.invalid && role_f.touched"
+             [class.valid]="role_f.valid && role_f.touched">
+          <label for="role">Role <span class="req">*</span></label>
+          <select id="role" name="role"
+                  [(ngModel)]="role" #role_f="ngModel" required>
+            <option value="" disabled>Select role…</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="guest">Guest</option>
+          </select>
+          <span class="err" *ngIf="role_f.invalid && role_f.touched">
+            ⚠ Please select a role.
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Section: Additional -->
+      <div class="section-title" style="margin-top:28px;">Additional Information</div>
+      <div class="form-grid">
+
+        <!-- Gender — Radio Buttons (fixed: hidden input holds ngModel, radios update via change) -->
+        <div class="field full"
+             [class.invalid]="gender_f.invalid && gender_f.touched">
+          <label>Gender <span class="req">*</span></label>
+
+          <input type="hidden" name="gender"
+                 [(ngModel)]="gender" #gender_f="ngModel" required />
+
+          <div class="radio-group">
+            <label class="radio-option" [class.selected]="gender === 'Male'">
+              <input type="radio" name="gender_r" value="Male"
+                     [checked]="gender === 'Male'"
+                     (change)="gender = 'Male'" />
+              <span>Male</span>
+            </label>
+            <label class="radio-option" [class.selected]="gender === 'Female'">
+              <input type="radio" name="gender_r" value="Female"
+                     [checked]="gender === 'Female'"
+                     (change)="gender = 'Female'" />
+              <span>Female</span>
+            </label>
+            <label class="radio-option" [class.selected]="gender === 'Non-binary'">
+              <input type="radio" name="gender_r" value="Non-binary"
+                     [checked]="gender === 'Non-binary'"
+                     (change)="gender = 'Non-binary'" />
+              <span>Non-binary</span>
+            </label>
+            <label class="radio-option" [class.selected]="gender === 'Prefer not to say'">
+              <input type="radio" name="gender_r" value="Prefer not to say"
+                     [checked]="gender === 'Prefer not to say'"
+                     (change)="gender = 'Prefer not to say'" />
+              <span>Prefer not to say</span>
+            </label>
+          </div>
+
+          <span class="err" *ngIf="gender_f.invalid && gender_f.touched">
+            ⚠ Please select a gender.
+          </span>
+        </div>
+
+        <!-- Status -->
+        <div class="field full"
+             [class.invalid]="status_f.invalid && status_f.touched"
+             [class.valid]="status_f.valid && status_f.touched">
+          <label for="status">Employment Status <span class="req">*</span></label>
+          <select id="status" name="status"
+                  [(ngModel)]="status" #status_f="ngModel" required>
+            <option value="" disabled>Select status…</option>
+            <option value="Permanent">Permanent</option>
+            <option value="Probationary">Probationary</option>
+          </select>
+          <span class="err" *ngIf="status_f.invalid && status_f.touched">
+            ⚠ Please select an employment status.
+          </span>
+        </div>
+
+        <!-- Comments -->
+        <div class="field full">
+          <label for="comments">Comments / Notes</label>
+          <textarea id="comments" name="comments"
+                    [(ngModel)]="comments"
+                    placeholder="Any additional notes or comments…"
+                    rows="4"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <div class="field full">
+          <button type="submit" class="btn-submit" [disabled]="myForm.invalid">
+            Submit Registration
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="card success-card" *ngIf="submitted">
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">Registration Submitted!</h2>
+    <p class="success-sub">Here's a summary of what was entered:</p>
+
+    <div class="preview-grid">
+      <div class="preview-item">
+        <span class="preview-label">Username</span>
+        <span class="preview-val">{{ username }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Email</span>
+        <span class="preview-val">{{ email }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Role</span>
+        <span class="preview-val">{{ role }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Gender</span>
+        <span class="preview-val">{{ gender }}</span>
+      </div>
+      <div class="preview-item">
+        <span class="preview-label">Status</span>
+        <span class="preview-val">{{ status }}</span>
+      </div>
+      <div class="preview-item full">
+        <span class="preview-label">Comments</span>
+        <span class="preview-val">{{ comments || '—' }}</span>
+      </div>
+    </div>
+
+    <button class="btn-reset" (click)="reset()">← Submit Another</button>
+  </div>
+
+</div>
