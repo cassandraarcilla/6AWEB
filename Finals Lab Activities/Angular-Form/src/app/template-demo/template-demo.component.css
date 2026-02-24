@@ -1,0 +1,347 @@
+/* ============================================================
+   template-demo.component.css
+   Color Palette:
+     --peach:     #F8B195
+     --coral:     #F67280
+     --mauve:     #C06C84
+     --purple:    #6C5B7B
+     --deep-blue: #355C7D
+   ============================================================ */
+
+/* ── Page Layout ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 56px 16px 80px;
+}
+
+/* ── Header ── */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeDown 0.6s ease both;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(248, 177, 149, 0.15);
+  border: 1px solid rgba(248, 177, 149, 0.4);
+  color: #F8B195;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fdf0ea;
+  margin-bottom: 10px;
+}
+
+.accent { color: #F8B195; }
+
+.subtitle {
+  color: #b8a09a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── Card ── */
+.card {
+  background: rgba(30, 58, 82, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(248, 177, 149, 0.15);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.65s ease both;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+}
+
+/* Gradient top border */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F8B195, #F67280, #C06C84, #6C5B7B);
+}
+
+/* ── Section Title ── */
+.section-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #F67280;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(246,114,128,0.2);
+}
+
+/* ── Form Grid ── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field.full { grid-column: 1 / -1; }
+
+/* ── Labels ── */
+label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c0a8a0;
+}
+
+.req { color: #F67280; margin-left: 2px; }
+
+/* ── Inputs, Selects, Textarea ── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  background: rgba(53, 92, 125, 0.45);
+  border: 1.5px solid rgba(248, 177, 149, 0.2);
+  border-radius: 10px;
+  color: #fdf0ea;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+input::placeholder,
+textarea::placeholder { color: rgba(253,240,234,0.3); }
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #F8B195;
+  box-shadow: 0 0 0 3px rgba(248, 177, 149, 0.18);
+  background: rgba(53, 92, 125, 0.65);
+}
+
+select { cursor: pointer; }
+select option { background: #1e3a52; color: #fdf0ea; }
+
+textarea { resize: vertical; min-height: 100px; }
+
+/* ── Validation States ── */
+.field.valid input,
+.field.valid select,
+.field.valid textarea {
+  border-color: rgba(248, 177, 149, 0.6);
+}
+
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea {
+  border-color: #F67280;
+  box-shadow: 0 0 0 3px rgba(246, 114, 128, 0.15);
+}
+
+.err {
+  font-size: 11px;
+  color: #F67280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Radio Group ── */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(53, 92, 125, 0.4);
+  border: 1.5px solid rgba(248, 177, 149, 0.2);
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.radio-option:has(input:checked),
+.radio-option.selected {
+  border-color: #F8B195;
+  background: rgba(248, 177, 149, 0.12);
+}
+
+.radio-option input[type="radio"] {
+  accent-color: #F8B195;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.radio-option span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fdf0ea;
+}
+
+/* ── Submit Button ── */
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #F67280, #C06C84);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 15px 28px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(246,114,128,0.35);
+  margin-top: 4px;
+}
+
+.btn-submit:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-submit:not(:disabled):hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(246,114,128,0.45);
+}
+
+.btn-submit:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* ── Success Card ── */
+.success-card {
+  text-align: center;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F8B195, #F67280);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 24px rgba(246,114,128,0.4);
+}
+
+.success-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #F8B195;
+  margin-bottom: 8px;
+}
+
+.success-sub {
+  color: #b8a09a;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+/* ── Preview Grid ── */
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.preview-item { display: flex; flex-direction: column; gap: 3px; }
+.preview-item.full { grid-column: 1 / -1; }
+
+.preview-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8a09a;
+}
+
+.preview-val {
+  font-size: 14px;
+  color: #fdf0ea;
+  background: rgba(53, 92, 125, 0.4);
+  border: 1px solid rgba(248, 177, 149, 0.15);
+  border-radius: 8px;
+  padding: 9px 14px;
+}
+
+/* ── Reset Button ── */
+.btn-reset {
+  background: transparent;
+  border: 1.5px solid rgba(248, 177, 149, 0.4);
+  border-radius: 10px;
+  color: #F8B195;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 24px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-reset:hover {
+  background: rgba(248, 177, 149, 0.1);
+  border-color: #F8B195;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .card { padding: 28px 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: 1; }
+  .preview-grid { grid-template-columns: 1fr; }
+  .radio-group { grid-template-columns: 1fr; }
+}
