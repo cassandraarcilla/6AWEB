@@ -1,0 +1,473 @@
+/* ================================================
+   Angular Material Demo — Blue · Green · White
+   Enhanced form styles with icons
+================================================ */
+
+// Color tokens
+$primary:      #006064;
+$primary-mid:  #00838f;
+$accent:       #00897b;
+$accent-light: #4ebaaa;
+$teal-bg:      #e0f7fa;
+$teal-bg-2:    #e8f5e9;
+$surface:      #ffffff;
+$border:       #cfd8dc;
+$text-dark:    #263238;
+$text-mid:     #546e7a;
+$text-light:   #90a4ae;
+$error:        #d32f2f;
+
+/* ── Page wrapper ─────────────────────────── */
+.page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #e0f7fa 0%, #f1f8e9 60%, #ffffff 100%);
+  font-family: Roboto, sans-serif;
+}
+
+/* ── Toolbar ──────────────────────────────── */
+.main-toolbar {
+  background: linear-gradient(135deg, $primary 0%, $accent 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 12px rgba(0, 96, 100, 0.35) !important;
+  height: 64px;
+}
+.toolbar-logo {
+  margin-right: 10px;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: #b2ebf2;
+}
+.toolbar-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.spacer { flex: 1 1 auto; }
+.notif-btn { margin-right: 4px; }
+
+/* ── Hero header ──────────────────────────── */
+.hero-header {
+  text-align: center;
+  padding: 40px 16px 24px;
+}
+.hero-icon-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $primary, $accent);
+  box-shadow: 0 6px 20px rgba(0, 96, 100, 0.35);
+  margin-bottom: 16px;
+}
+.hero-icon {
+  font-size: 38px;
+  width: 38px;
+  height: 38px;
+  color: #ffffff;
+}
+.page-title {
+  font-size: 2rem;
+  font-weight: 400;
+  color: $primary;
+  margin: 0 0 8px;
+  letter-spacing: -0.3px;
+}
+.page-subtitle {
+  font-size: 1rem;
+  color: $text-mid;
+  margin: 0;
+}
+
+/* ── Content wrapper ──────────────────────── */
+.content-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px 64px;
+}
+
+/* ── Info card ────────────────────────────── */
+.info-card {
+  margin-bottom: 20px;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #e0f7fa, #e8f5e9) !important;
+  border: 1px solid #b2dfdb !important;
+  box-shadow: none !important;
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: $text-mid;
+  padding: 4px 0;
+}
+.info-icon {
+  color: $accent;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ── Main form card ───────────────────────── */
+.form-card {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 96, 100, 0.12) !important;
+  border: 1px solid #e0f2f1 !important;
+  overflow: hidden;
+}
+.form-card-header {
+  background: linear-gradient(135deg, $primary 0%, $primary-mid 100%);
+  padding: 20px 24px !important;
+
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    mat-icon { color: #b2ebf2; }
+  }
+  mat-card-subtitle {
+    color: rgba(255,255,255,0.75) !important;
+    margin-top: 4px;
+  }
+}
+
+/* ── Form body ────────────────────────────── */
+.register-form {
+  padding: 8px 0;
+}
+
+/* ── Field groups ─────────────────────────── */
+.field-group {
+  margin-bottom: 4px;
+}
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $primary;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+  padding-left: 2px;
+}
+.field-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: $accent;
+}
+.req { color: $error; font-size: 0.85rem; }
+
+/* ── Form fields (outline) ────────────────── */
+.full-width {
+  width: 100%;
+  display: block;
+  margin-bottom: 8px;
+
+  ::ng-deep {
+    // Outline border color
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: $border !important;
+    }
+    // Focused border
+    .mdc-text-field--focused .mdc-notched-outline__leading,
+    .mdc-text-field--focused .mdc-notched-outline__notch,
+    .mdc-text-field--focused .mdc-notched-outline__trailing {
+      border-color: $primary !important;
+      border-width: 2px !important;
+    }
+    // Hover border
+    .mdc-text-field:hover .mdc-notched-outline__leading,
+    .mdc-text-field:hover .mdc-notched-outline__notch,
+    .mdc-text-field:hover .mdc-notched-outline__trailing {
+      border-color: $primary-mid !important;
+    }
+    // Label
+    .mat-mdc-floating-label { color: $text-mid !important; }
+    .mdc-text-field--focused .mat-mdc-floating-label { color: $primary !important; }
+    // Input text
+    input.mat-mdc-input-element { color: $text-dark !important; font-size: 0.95rem; }
+    // Background
+    .mat-mdc-text-field-wrapper { background-color: #fafffe !important; border-radius: 10px !important; }
+    // Prefix icon
+    .mat-mdc-form-field-icon-prefix { color: $accent !important; padding-left: 12px; padding-right: 4px; }
+    // Suffix icon
+    .mat-mdc-form-field-icon-suffix button mat-icon { color: $text-light; }
+    .mat-mdc-form-field-icon-suffix button:hover mat-icon { color: $primary; }
+    // Hint
+    .mat-mdc-form-field-hint { color: $text-light; font-size: 0.75rem; }
+    // Error
+    .mat-mdc-form-field-error {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: $error;
+      font-size: 0.78rem;
+    }
+  }
+}
+.prefix-icon { font-size: 20px; width: 20px; height: 20px; }
+.err-icon    { font-size: 14px; width: 14px; height: 14px; }
+
+/* ── Gender radio card ────────────────────── */
+.radio-card {
+  background: #fafffe;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  transition: border-color 0.2s;
+  &:hover { border-color: $primary-mid; }
+}
+.gender-radio-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  ::ng-deep .mat-mdc-radio-button {
+    .mdc-radio__outer-circle { border-color: $border !important; }
+    &.mat-mdc-radio-checked .mdc-radio__outer-circle { border-color: $primary !important; }
+    &.mat-mdc-radio-checked .mdc-radio__inner-circle { background-color: $primary !important; }
+    .mdc-label { display: flex; align-items: center; gap: 4px; color: $text-dark; font-size: 0.9rem; }
+  }
+
+  // Each option has its own pill background
+  mat-radio-button {
+    background: #f0fafb;
+    border: 1px solid $border;
+    border-radius: 50px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    &:hover { background: #e0f7fa; border-color: $accent; }
+  }
+  ::ng-deep .mat-mdc-radio-button.mat-mdc-radio-checked {
+    background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+    border-color: $primary !important;
+  }
+}
+.radio-icon {
+  font-size: 16px; width: 16px; height: 16px;
+  color: $accent; vertical-align: middle;
+}
+
+/* ── Slider card ──────────────────────────── */
+.slider-card {
+  background: #fafffe;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+}
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.slider-label-text {
+  font-size: 0.88rem;
+  color: $text-mid;
+}
+.skill-badge {
+  background: linear-gradient(135deg, $primary, $accent);
+  color: #fff;
+  border-radius: 50px;
+  padding: 2px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+}
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.full-slider {
+  flex: 1;
+  ::ng-deep .mdc-slider__track--active_fill { background-color: $primary !important; }
+  ::ng-deep .mdc-slider__thumb-knob { background-color: $primary !important; border-color: $primary !important; }
+  ::ng-deep .mdc-slider__track--inactive { background-color: #b2dfdb !important; }
+}
+.skill-min-icon { color: $text-light; font-size: 22px; width: 22px; height: 22px; }
+.skill-max-icon { color: #f9a825;     font-size: 22px; width: 22px; height: 22px; }
+.skill-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: $text-light;
+  margin-top: 4px;
+  padding: 0 30px;
+}
+
+/* ── Section divider ──────────────────────── */
+.section-divider { margin: 8px 0 16px; border-color: #e0f2f1; }
+
+/* ── Toggle card ──────────────────────────── */
+.toggle-card {
+  background: #fafffe;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.toggle-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.toggle-icon {
+  font-size: 22px; width: 22px; height: 22px;
+  color: $accent;
+  background: #e0f7fa;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: content-box;
+}
+.toggle-title { font-size: 0.9rem; font-weight: 500; color: $text-dark; }
+.toggle-desc  { font-size: 0.78rem; color: $text-light; margin-top: 2px; }
+
+/* ── Chips card ───────────────────────────── */
+.chips-card {
+  background: #fafffe;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.chips-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Tips expansion panel ─────────────────── */
+.tips-panel {
+  margin-bottom: 20px;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  border: 1px solid #b2dfdb !important;
+  background: #f1fbfa !important;
+
+  ::ng-deep .mat-expansion-panel-header {
+    background: linear-gradient(135deg, #e0f7fa, #e8f5e9) !important;
+    border-radius: 10px !important;
+    mat-panel-title { display: flex; align-items: center; color: $primary; font-weight: 500;
+      mat-icon { color: $accent; font-size: 20px; } }
+    mat-panel-description { color: $text-light; }
+  }
+}
+.tips-list {
+  list-style: none;
+  padding: 8px 0 0;
+  margin: 0;
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 0.88rem;
+    color: $text-mid;
+    border-bottom: 1px dashed #e0f2f1;
+    &:last-child { border-bottom: none; }
+  }
+}
+.tip-icon {
+  font-size: 16px; width: 16px; height: 16px;
+  color: $accent; flex-shrink: 0;
+}
+
+/* ── Submit button ────────────────────────── */
+.submit-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 52px !important;
+  border-radius: 12px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, $primary 0%, $accent 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 96, 100, 0.35) !important;
+  transition: box-shadow 0.2s, transform 0.15s !important;
+  margin-top: 8px;
+
+  &:not([disabled]):hover {
+    box-shadow: 0 6px 24px rgba(0, 96, 100, 0.45) !important;
+    transform: translateY(-1px);
+  }
+  &[disabled] {
+    background: #b0bec5 !important;
+    box-shadow: none !important;
+  }
+  mat-icon { font-size: 20px; width: 20px; height: 20px; }
+}
+
+/* ── Result card ──────────────────────────── */
+.result-card {
+  margin-top: 24px;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 96, 100, 0.12) !important;
+  border: 1px solid #b2dfdb !important;
+  overflow: hidden;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.result-avatar {
+  background: linear-gradient(135deg, $primary, $accent);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  mat-icon { color: #fff; font-size: 22px; }
+}
+
+.result-grid {
+  padding: 8px 0;
+}
+.result-row {
+  display: grid;
+  grid-template-columns: 28px 120px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  &:last-child { border-bottom: none; }
+}
+.result-icon {
+  font-size: 18px; width: 18px; height: 18px;
+  color: $accent;
+}
+.result-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $text-mid;
+}
+.result-value {
+  font-size: 0.92rem;
+  color: $text-dark;
+}
