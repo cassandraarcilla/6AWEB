@@ -1,0 +1,420 @@
+<div class="shell" [class.dark]="isDark" [class.light]="!isDark">
+
+  <!-- ═══════════════════════════════════════════
+       TOOLBAR
+  ═════════════════════════════════════════════ -->
+  <mat-toolbar class="topbar">
+    <div class="topbar-left">
+      <div class="brand-mark">
+        <mat-icon>music_note</mat-icon>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">SoundWave Fest</span>
+        <span class="brand-year">2025</span>
+      </div>
+    </div>
+
+    <span class="flex-gap"></span>
+
+    <!-- Dark / Light Mode Toggle -->
+    <div class="theme-toggle-wrap">
+      <mat-icon class="theme-sun">light_mode</mat-icon>
+      <mat-slide-toggle
+        [(ngModel)]="isDark"
+        (change)="toggleTheme()"
+        color="accent"
+        class="theme-toggle"
+        matTooltip="Switch theme">
+      </mat-slide-toggle>
+      <mat-icon class="theme-moon">dark_mode</mat-icon>
+    </div>
+
+    <button mat-icon-button matTooltip="Notifications" class="ml-8">
+      <mat-icon matBadge="2" matBadgeColor="warn" matBadgeSize="small">notifications_none</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-badge">
+      <mat-icon>headphones</mat-icon>
+      <span>July 19–20, 2025 · Manila, PH</span>
+    </div>
+    <h1 class="hero-title">
+      Register for<br>
+      <span class="hero-accent">SoundWave Fest 2025</span>
+    </h1>
+    <p class="hero-sub">
+      The Philippines' biggest outdoor music festival — live bands, DJs &amp; headlining artists.
+      Grab your ticket before they're sold out.
+    </p>
+    <div class="hero-chips">
+      <span class="hero-chip"><mat-icon>people</mat-icon> 10,000+ Fans</span>
+      <span class="hero-chip"><mat-icon>mic</mat-icon> 30 Artists</span>
+      <span class="hero-chip"><mat-icon>workspace_premium</mat-icon> 4 Stages</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FORM
+  ═════════════════════════════════════════════ -->
+  <div class="form-shell">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
+
+      <!-- ── SECTION: Personal Info ── -->
+      <div class="form-section">
+        <div class="section-head">
+          <div class="section-num">01</div>
+          <div>
+            <div class="section-title">Personal Information</div>
+            <div class="section-sub">Tell us who you are</div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>First Name</mat-label>
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input matInput formControlName="firstName" placeholder="Juan">
+            @if (f['firstName'].invalid && f['firstName'].touched) {
+              <mat-error>First name is required (min 2 chars)</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Last Name</mat-label>
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input matInput formControlName="lastName" placeholder="dela Cruz">
+            @if (f['lastName'].invalid && f['lastName'].touched) {
+              <mat-error>Last name is required (min 2 chars)</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="field-full">
+          <mat-label>Email Address</mat-label>
+          <mat-icon matPrefix>alternate_email</mat-icon>
+          <input matInput type="email" formControlName="email" placeholder="juan@example.com">
+          @if (f['email'].invalid && f['email'].touched) {
+            <mat-error>A valid email address is required</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="field-row">
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Phone Number</mat-label>
+            <mat-icon matPrefix>phone_iphone</mat-icon>
+            <input matInput formControlName="phone" placeholder="+63 9XX XXX XXXX">
+            <mat-hint>Optional</mat-hint>
+            @if (f['phone'].invalid && f['phone'].touched) {
+              <mat-error>Enter a valid phone number</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Date of Birth</mat-label>
+            <mat-icon matPrefix>cake</mat-icon>
+            <input matInput [matDatepicker]="dob" formControlName="birthDate"
+                   [max]="maxBirthDate" [min]="minBirthDate" placeholder="MM/DD/YYYY">
+            <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob startView="multi-year"></mat-datepicker>
+            <mat-hint>Must be born 2006 or earlier</mat-hint>
+            @if (f['birthDate'].invalid && f['birthDate'].touched) {
+              <mat-error>{{ getBirthDateError() }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Gender radio -->
+        <div class="radio-block">
+          <label class="block-label">
+            <mat-icon>wc</mat-icon> Gender <span class="req-star">*</span>
+          </label>
+          <mat-radio-group formControlName="gender" class="gender-group">
+            <mat-radio-button value="male"   color="primary"><mat-icon class="r-icon">male</mat-icon>Male</mat-radio-button>
+            <mat-radio-button value="female" color="primary"><mat-icon class="r-icon">female</mat-icon>Female</mat-radio-button>
+            <mat-radio-button value="other"  color="primary"><mat-icon class="r-icon">person</mat-icon>Other</mat-radio-button>
+            <mat-radio-button value="prefer_not" color="primary"><mat-icon class="r-icon">lock</mat-icon>Prefer not to say</mat-radio-button>
+          </mat-radio-group>
+          @if (f['gender'].invalid && f['gender'].touched) {
+            <mat-error class="block-error">Please select your gender</mat-error>
+          }
+        </div>
+
+        <mat-form-field appearance="outline" class="field-full">
+          <mat-label>School / University / Company</mat-label>
+          <mat-icon matPrefix>domain</mat-icon>
+          <input matInput formControlName="institution" placeholder="e.g. Holy Angel University">
+          @if (f['institution'].invalid && f['institution'].touched) {
+            <mat-error>Institution is required</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <mat-divider class="sec-divider"></mat-divider>
+
+      <!-- ── SECTION: Account ── -->
+      <div class="form-section">
+        <div class="section-head">
+          <div class="section-num">02</div>
+          <div>
+            <div class="section-title">Account Setup</div>
+            <div class="section-sub">Create your festival portal login</div>
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline" class="field-full">
+          <mat-label>Username</mat-label>
+          <mat-icon matPrefix>badge</mat-icon>
+          <input matInput formControlName="username" placeholder="your_username">
+          <mat-hint>At least 3 characters</mat-hint>
+          @if (f['username'].invalid && f['username'].touched) {
+            <mat-error>Username is required (min 3 chars)</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="field-row">
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix>vpn_key</mat-icon>
+            <input matInput [type]="hidePassword ? 'password' : 'text'"
+                   formControlName="password" placeholder="Min 8 alphanumeric">
+            <button mat-icon-button matSuffix type="button"
+                    (click)="hidePassword = !hidePassword"
+                    [matTooltip]="hidePassword ? 'Show' : 'Hide'">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            @if (f['password'].invalid && f['password'].touched) {
+              <mat-error>{{ getPasswordError() }}</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Confirm Password</mat-label>
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input matInput [type]="hideConfirm ? 'password' : 'text'"
+                   formControlName="confirmPassword" placeholder="Re-enter password">
+            <button mat-icon-button matSuffix type="button"
+                    (click)="hideConfirm = !hideConfirm">
+              <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            @if (f['confirmPassword'].touched && form.hasError('passwordsMismatch')
+                 && !f['confirmPassword'].hasError('required')) {
+              <mat-error>Passwords do not match</mat-error>
+            }
+            @if (f['confirmPassword'].hasError('required') && f['confirmPassword'].touched) {
+              <mat-error>Please confirm your password</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Password rules hint -->
+        <mat-expansion-panel class="rules-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title><mat-icon>policy</mat-icon>&nbsp;Password Requirements</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul class="rules-list">
+            <li><mat-icon class="rule-ok">check_circle_outline</mat-icon> Must start with a letter (a–z, A–Z)</li>
+            <li><mat-icon class="rule-ok">check_circle_outline</mat-icon> Letters and numbers only — no spaces or symbols</li>
+            <li><mat-icon class="rule-ok">check_circle_outline</mat-icon> Minimum 8 characters long</li>
+            <li><mat-icon class="rule-ok">check_circle_outline</mat-icon> Example: <code>Angel2025</code>, <code>dev4conf</code></li>
+          </ul>
+        </mat-expansion-panel>
+      </div>
+
+      <mat-divider class="sec-divider"></mat-divider>
+
+      <!-- ── SECTION: Event Preferences ── -->
+      <div class="form-section">
+        <div class="section-head">
+          <div class="section-num">03</div>
+          <div>
+            <div class="section-title">Concert Preferences</div>
+            <div class="section-sub">Help us personalize your festival experience</div>
+          </div>
+        </div>
+
+        <!-- Stage / Genre selection -->
+        <div class="block-label-row">
+          <mat-icon>queue_music</mat-icon>
+          <span>Preferred Music Stage <span class="req-star">*</span></span>
+        </div>
+        <mat-form-field appearance="outline" class="field-full">
+          <mat-label>Select your preferred stage</mat-label>
+          <mat-select formControlName="track">
+            <mat-option *ngFor="let t of trackOptions" [value]="t.value">
+              <mat-icon class="opt-icon">{{ t.icon }}</mat-icon>
+              {{ t.label }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>explore</mat-icon>
+          @if (f['track'].invalid && f['track'].touched) {
+            <mat-error>Please select a stage</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="field-row">
+          <!-- Merch Shirt Size -->
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Merch T-Shirt Size</mat-label>
+            <mat-icon matPrefix>checkroom</mat-icon>
+            <mat-select formControlName="shirtSize">
+              <mat-option *ngFor="let s of shirtSizes" [value]="s">{{ s }}</mat-option>
+            </mat-select>
+            @if (f['shirtSize'].invalid && f['shirtSize'].touched) {
+              <mat-error>Please select a shirt size</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Dietary -->
+          <mat-form-field appearance="outline" class="field-half">
+            <mat-label>Dietary Needs</mat-label>
+            <mat-icon matPrefix>restaurant</mat-icon>
+            <input matInput formControlName="dietaryNeeds" placeholder="e.g. Vegetarian">
+            <mat-hint>Optional</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- Experience slider -->
+        <div class="slider-block">
+          <div class="slider-header">
+            <div class="block-label-row">
+              <mat-icon>insights</mat-icon>
+              <span>Years of Concert-Going Experience</span>
+            </div>
+            <span class="exp-badge">{{ form.get('experience')?.value }} yr{{ form.get('experience')?.value !== 1 ? 's' : '' }}</span>
+          </div>
+          <div class="slider-row">
+            <mat-icon class="sl-lo">hourglass_empty</mat-icon>
+            <mat-slider min="0" max="20" step="1" discrete color="primary" class="exp-slider">
+              <input matSliderThumb formControlName="experience">
+            </mat-slider>
+            <mat-icon class="sl-hi">workspace_premium</mat-icon>
+          </div>
+          <div class="slider-ticks"><span>0</span><span>5</span><span>10</span><span>15</span><span>20+</span></div>
+        </div>
+
+        <!-- Tech tags -->
+        <div class="block-label-row" style="margin-top:16px;">
+          <mat-icon>tag</mat-icon>
+          <span>Music Genres You Enjoy</span>
+          <span class="block-hint">Select all that apply</span>
+        </div>
+        <div class="tags-wrap">
+          <mat-chip-listbox aria-label="Tech tags" class="tags-box">
+            <mat-chip-option
+              *ngFor="let tag of techTags"
+              [selected]="isTagSelected(tag)"
+              (click)="toggleTag(tag)"
+              color="primary">
+              {{ tag }}
+            </mat-chip-option>
+          </mat-chip-listbox>
+        </div>
+      </div>
+
+      <mat-divider class="sec-divider"></mat-divider>
+
+      <!-- ── SECTION: Consent ── -->
+      <div class="form-section">
+        <div class="section-head">
+          <div class="section-num">04</div>
+          <div>
+            <div class="section-title">Terms &amp; Consent</div>
+            <div class="section-sub">Please read and agree to proceed</div>
+          </div>
+        </div>
+
+        <div class="consent-block">
+          <mat-checkbox formControlName="agreeTerms" color="primary" class="consent-check">
+            <span class="consent-text">
+              I agree to the <a href="#" class="consent-link">Terms &amp; Conditions</a> and
+              <a href="#" class="consent-link">Privacy Policy</a> of SoundWave Fest 2025.
+            </span>
+          </mat-checkbox>
+          @if (f['agreeTerms'].invalid && f['agreeTerms'].touched) {
+            <mat-error class="block-error">You must accept the Terms &amp; Conditions</mat-error>
+          }
+        </div>
+
+        <div class="consent-block">
+          <mat-checkbox formControlName="codeOfConduct" color="primary" class="consent-check">
+            <span class="consent-text">
+              I agree to uphold the <a href="#" class="consent-link">Festival Rules</a> throughout the event.
+            </span>
+          </mat-checkbox>
+          @if (f['codeOfConduct'].invalid && f['codeOfConduct'].touched) {
+            <mat-error class="block-error">You must agree to the Code of Conduct</mat-error>
+          }
+        </div>
+      </div>
+
+      <!-- ── PROGRESS BAR (during submit) ── -->
+      @if (isSubmitting) {
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <mat-icon>upload</mat-icon>
+            <span>Submitting registration…</span>
+            <strong>{{ submitProgress }}%</strong>
+          </div>
+          <mat-progress-bar mode="determinate" [value]="submitProgress" color="primary" class="sub-bar">
+          </mat-progress-bar>
+        </div>
+      }
+
+      <!-- ── SUBMIT ── -->
+      <button mat-raised-button type="submit" class="submit-btn" [disabled]="isSubmitting">
+        <mat-icon>{{ isSubmitting ? 'hourglass_top' : 'rocket_launch' }}</mat-icon>
+        {{ isSubmitting ? 'Registering…' : 'Register Now' }}
+      </button>
+
+    </form>
+  </div><!-- /form-shell -->
+
+  <!-- ═══════════════════════════════════════════
+       CONFIRMATION CARD
+  ═════════════════════════════════════════════ -->
+  @if (submitted && snap) {
+    <div class="confirm-shell">
+      <mat-card class="confirm-card">
+        <div class="confirm-header">
+          <div class="confirm-icon-ring">
+            <mat-icon>check</mat-icon>
+          </div>
+          <h2 class="confirm-title">You're In! 🎉</h2>
+          <p class="confirm-sub">Your registration for SoundWave Fest 2025 is confirmed.</p>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="confirm-body">
+          <div class="confirm-grid">
+            <div class="cg-row"><mat-icon>person</mat-icon><span class="cl">Name</span><span>{{ snap.firstName }} {{ snap.lastName }}</span></div>
+            <div class="cg-row"><mat-icon>alternate_email</mat-icon><span class="cl">Email</span><span>{{ snap.email }}</span></div>
+            <div class="cg-row"><mat-icon>badge</mat-icon><span class="cl">Username</span><span>{{ snap.username }}</span></div>
+            <div class="cg-row"><mat-icon>wc</mat-icon><span class="cl">Gender</span><span>{{ snap.gender }}</span></div>
+            <div class="cg-row"><mat-icon>domain</mat-icon><span class="cl">Institution</span><span>{{ snap.institution }}</span></div>
+            <div class="cg-row"><mat-icon>cake</mat-icon><span class="cl">Birth Date</span><span>{{ snap.birthDate | date:'mediumDate' }}</span></div>
+            <div class="cg-row"><mat-icon>queue_music</mat-icon><span class="cl">Stage</span><span>{{ snap.track }}</span></div>
+            <div class="cg-row"><mat-icon>checkroom</mat-icon><span class="cl">Merch Size</span><span>{{ snap.shirtSize }}</span></div>
+            <div class="cg-row"><mat-icon>insights</mat-icon><span class="cl">Concert Exp.</span><span>{{ snap.experience }} year(s)</span></div>
+            @if (snap.techTags?.length) {
+              <div class="cg-row"><mat-icon>tag</mat-icon><span class="cl">Genres</span><span>{{ snap.techTags.join(', ') }}</span></div>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <mat-icon class="footer-bolt">music_note</mat-icon>
+    <span>SoundWave Fest 2025 &mdash; Angular Material Challenge &mdash; All rights reserved</span>
+  </footer>
+
+</div>
