@@ -10,3 +10,5 @@ This repository contains files, activities, and resources requires for the cours
 
 ## **Contents**
 - Prelim Activities
+- Midterm Activities
+- Final Activities
