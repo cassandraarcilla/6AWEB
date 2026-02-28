@@ -1,13 +1,13 @@
 # angular_mat_challenge
 
-**NexaConf 2025 — Angular Material Reactive Form**
+**SoundWave Fest 2025 — Angular Material Reactive Form**
 A tech conference registration form built as the Angular Material Challenge.
 
 ---
 
 ## 🚀 Features
 
-- **Event**: NexaConf 2025 Tech Conference Registration
+- **Event**: SoundWave Fest 2025
 - **Dark / Light Mode Toggle** — MatSlideToggle in toolbar switches full theme
 - **Password Validation**: alphanumeric only, starts with a letter, min 8 characters
 - **Birth Date Validation**: Only users born in 2006 or earlier are accepted
