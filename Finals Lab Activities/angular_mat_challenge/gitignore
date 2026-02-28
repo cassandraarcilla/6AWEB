@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Angular build output
+dist/
+out-tsc/
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# Local Netlify folder
+.netlify
