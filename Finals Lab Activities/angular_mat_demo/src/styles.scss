@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(160deg, #e0f7fa 0%, #f1f8e9 60%, #ffffff 100%);
+}
+
+/* Snackbar */
+.snack-success .mdc-snackbar__surface {
+  background-color: #004d40 !important;
+  color: #e0f7fa !important;
+}
+.snack-error .mdc-snackbar__surface {
+  background-color: #b71c1c !important;
+  color: #ffffff !important;
+}
