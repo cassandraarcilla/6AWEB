@@ -1,0 +1,320 @@
+<div class="page-wrapper">
+
+  <!-- ===== TOOLBAR ===== -->
+  <mat-toolbar class="main-toolbar">
+    <mat-icon class="toolbar-logo">layers</mat-icon>
+    <span class="toolbar-title">Angular Material Demo</span>
+    <span class="spacer"></span>
+    <button mat-icon-button matTooltip="3 new notifications" class="notif-btn">
+      <mat-icon matBadge="3" matBadgeColor="warn" matBadgeSize="small">notifications</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Help">
+      <mat-icon>help_outline</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="content-wrap">
+
+    <!-- ===== HERO HEADER ===== -->
+    <div class="hero-header">
+      <div class="hero-icon-ring">
+        <mat-icon class="hero-icon">how_to_reg</mat-icon>
+      </div>
+      <h1 class="page-title">Angular Material / Reactive Form</h1>
+      <p class="page-subtitle">Complete the form below to register your account</p>
+    </div>
+
+    <!-- ===== INFO CARD ===== -->
+    <mat-card class="info-card">
+      <mat-card-content>
+        <div class="info-row">
+          <mat-icon class="info-icon">info</mat-icon>
+          <span>Fields marked with <strong>*</strong> are required. Your information is kept private and secure.</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- ===== MAIN FORM CARD ===== -->
+    <mat-card class="form-card">
+      <mat-card-header class="form-card-header">
+        <mat-card-title>
+          <mat-icon>assignment_ind</mat-icon>
+          Registration Details
+        </mat-card-title>
+        <mat-card-subtitle>Please fill in all required fields</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content>
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)" class="register-form">
+
+          <!-- ── USERNAME ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">person</mat-icon>
+              <span>Username</span>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Enter your username" formControlName="userName">
+              <mat-icon matPrefix class="prefix-icon">account_circle</mat-icon>
+              <mat-hint>Choose a unique username</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!-- ── EMAIL ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">email</mat-icon>
+              <span>Email <span class="req">*</span></span>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email Address</mat-label>
+              <input matInput type="email" placeholder="Enter your email" formControlName="email">
+              <mat-icon matPrefix class="prefix-icon">alternate_email</mat-icon>
+              @if (formdata.controls['email'].invalid && formdata.controls['email'].touched) {
+                <mat-error>
+                  <mat-icon class="err-icon">error_outline</mat-icon>
+                  Email is required and must be a valid email.
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- ── PASSWORD ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">lock</mat-icon>
+              <span>Password <span class="req">*</span></span>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hidePassword ? 'password' : 'text'"
+                     placeholder="Min. 8 characters" formControlName="password">
+              <mat-icon matPrefix class="prefix-icon">vpn_key</mat-icon>
+              <button mat-icon-button matSuffix type="button"
+                      (click)="hidePassword = !hidePassword"
+                      [matTooltip]="hidePassword ? 'Show password' : 'Hide password'">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-hint>At least 8 characters with a mix of letters &amp; numbers</mat-hint>
+              @if (formdata.controls['password'].invalid && formdata.controls['password'].touched) {
+                <mat-error>
+                  <mat-icon class="err-icon">error_outline</mat-icon>
+                  Password is required and must be at least 8 characters long.
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- ── GENDER ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">wc</mat-icon>
+              <span>Gender <span class="req">*</span></span>
+            </div>
+            <div class="radio-card">
+              <mat-radio-group formControlName="gender" class="gender-radio-group">
+                <mat-radio-button value="male" color="primary">
+                  <mat-icon class="radio-icon">male</mat-icon> Male
+                </mat-radio-button>
+                <mat-radio-button value="female" color="primary">
+                  <mat-icon class="radio-icon">female</mat-icon> Female
+                </mat-radio-button>
+                <mat-radio-button value="other" color="primary">
+                  <mat-icon class="radio-icon">person</mat-icon> Other
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <!-- ── ADDRESS ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">home</mat-icon>
+              <span>Address</span>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Enter your address" formControlName="address">
+              <mat-icon matPrefix class="prefix-icon">location_on</mat-icon>
+              <mat-hint>Optional — city, province</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!-- ── BIRTH DATE ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">cake</mat-icon>
+              <span>Birth Date <span class="req">*</span></span>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Birth Date</mat-label>
+              <input matInput [matDatepicker]="picker"
+                     placeholder="MM/DD/YYYY" formControlName="birthDate">
+              <mat-icon matPrefix class="prefix-icon">event</mat-icon>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+              <mat-hint>Select your date of birth</mat-hint>
+              @if (formdata.get('birthDate')?.hasError('required') && formdata.get('birthDate')?.touched) {
+                <mat-error>
+                  <mat-icon class="err-icon">error_outline</mat-icon>
+                  Birth date is required.
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- ── SKILL LEVEL ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">star</mat-icon>
+              <span>Angular Skill Level</span>
+            </div>
+            <div class="slider-card">
+              <div class="slider-header">
+                <span class="slider-label-text">Rate your Angular expertise</span>
+                <span class="skill-badge">{{ formdata.get('angularSkillLevel')?.value }} / 10</span>
+              </div>
+              <div class="slider-row">
+                <mat-icon class="skill-min-icon">sentiment_dissatisfied</mat-icon>
+                <mat-slider [min]="minSkillLevel" [max]="maxSkillLevel" [step]="1"
+                            [discrete]="true" color="primary" class="full-slider">
+                  <input matSliderThumb formControlName="angularSkillLevel">
+                </mat-slider>
+                <mat-icon class="skill-max-icon">emoji_events</mat-icon>
+              </div>
+              <div class="skill-labels">
+                <span>Beginner</span>
+                <span>Intermediate</span>
+                <span>Expert</span>
+              </div>
+            </div>
+          </div>
+
+          <mat-divider class="section-divider"></mat-divider>
+
+          <!-- ── SLIDE TOGGLE ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">notifications_active</mat-icon>
+              <span>Preferences</span>
+            </div>
+            <div class="toggle-card">
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <mat-icon class="toggle-icon">email</mat-icon>
+                  <div>
+                    <div class="toggle-title">Receive Angular Updates &amp; News</div>
+                    <div class="toggle-desc">Get the latest Angular releases and tips</div>
+                  </div>
+                </div>
+                <mat-slide-toggle [(ngModel)]="receiveUpdates"
+                                  [ngModelOptions]="{standalone: true}" color="primary">
+                </mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CHIPS ── -->
+          <div class="field-group">
+            <div class="field-label">
+              <mat-icon class="field-icon">interests</mat-icon>
+              <span>Preferred Frameworks</span>
+            </div>
+            <div class="chips-card">
+              <mat-chip-listbox aria-label="Frameworks" class="chips-list">
+                <mat-chip-option *ngFor="let fw of favoriteFrameworks"
+                  [selected]="isSelected(fw)" (click)="toggleFramework(fw)" color="primary">
+                  <mat-icon matChipAvatar>code</mat-icon>
+                  {{ fw }}
+                </mat-chip-option>
+              </mat-chip-listbox>
+            </div>
+          </div>
+
+          <!-- ── EXPANSION PANEL ── -->
+          <mat-expansion-panel class="tips-panel" [(expanded)]="panelOpenState">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>tips_and_updates</mat-icon>&nbsp;Password &amp; Form Tips
+              </mat-panel-title>
+              <mat-panel-description>{{ panelOpenState ? 'Hide tips' : 'View helpful tips' }}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <ul class="tips-list">
+              <li><mat-icon class="tip-icon">check_circle</mat-icon> Username can be any text — no validation applied</li>
+              <li><mat-icon class="tip-icon">check_circle</mat-icon> Email must follow the format user&#64;example.com</li>
+              <li><mat-icon class="tip-icon">check_circle</mat-icon> Password requires at least 8 characters</li>
+              <li><mat-icon class="tip-icon">check_circle</mat-icon> Gender and Birth Date are required fields</li>
+              <li><mat-icon class="tip-icon">check_circle</mat-icon> Use the slider to rate your Angular expertise from 1 to 10</li>
+            </ul>
+          </mat-expansion-panel>
+
+          <!-- ── SUBMIT BUTTON ── -->
+          <button mat-raised-button type="submit"
+                  [disabled]="!formdata.valid"
+                  class="submit-btn">
+            <mat-icon>send</mat-icon>
+            Submit Registration
+          </button>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- ===== SUBMITTED DATA CARD ===== -->
+    @if (submitted) {
+      <mat-card class="result-card">
+        <mat-card-header>
+          <div mat-card-avatar class="result-avatar">
+            <mat-icon>check_circle</mat-icon>
+          </div>
+          <mat-card-title>Registration Submitted!</mat-card-title>
+          <mat-card-subtitle>Here is the information you entered</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <div class="result-grid">
+            <div class="result-row">
+              <mat-icon class="result-icon">account_circle</mat-icon>
+              <span class="result-label">Username</span>
+              <span class="result-value">{{ userName }}</span>
+            </div>
+            <div class="result-row">
+              <mat-icon class="result-icon">alternate_email</mat-icon>
+              <span class="result-label">Email</span>
+              <span class="result-value">{{ email }}</span>
+            </div>
+            <div class="result-row">
+              <mat-icon class="result-icon">vpn_key</mat-icon>
+              <span class="result-label">Password</span>
+              <span class="result-value">{{ password }}</span>
+            </div>
+            <div class="result-row">
+              <mat-icon class="result-icon">wc</mat-icon>
+              <span class="result-label">Gender</span>
+              <span class="result-value">{{ gender }}</span>
+            </div>
+            <div class="result-row">
+              <mat-icon class="result-icon">location_on</mat-icon>
+              <span class="result-label">Address</span>
+              <span class="result-value">{{ address || '—' }}</span>
+            </div>
+            <div class="result-row">
+              <mat-icon class="result-icon">cake</mat-icon>
+              <span class="result-label">Birth Date</span>
+              <span class="result-value">{{ birthDate | date:'shortDate' }}</span>
+            </div>
+            <div class="result-row">
+              <mat-icon class="result-icon">star</mat-icon>
+              <span class="result-label">Skill Level</span>
+              <span class="result-value">{{ angularSkillLevel }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+
+  </div>
+</div>
