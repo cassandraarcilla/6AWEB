@@ -1,0 +1,91 @@
+/* ── Global reset ──────────────────────────── */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ─────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0e0e1c; }
+::-webkit-scrollbar-thumb { background: #2a2a50; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #f5e642; }
+
+/* ── Dark theme global overrides ──────────── */
+body.dark-theme {
+  background: #080810;
+  color: #f0eeff;
+
+  .mat-datepicker-content {
+    background: #0e0e1c !important;
+    color: #f0eeff !important;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+  }
+  .mat-calendar-body-cell-content { color: #f0eeff !important; }
+  .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: #f5e642 !important;
+  }
+  .mat-calendar-body-selected {
+    background-color: #f5e642 !important;
+    color: #080810 !important;
+  }
+  .mat-mdc-select-panel {
+    background: #14142a !important;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px !important;
+  }
+  .mat-mdc-option {
+    color: #f0eeff !important;
+    font-family: 'Outfit', sans-serif;
+    &:hover, &.mat-mdc-option-active { background: rgba(245,230,66,0.08) !important; }
+  }
+  .mat-expansion-panel {
+    background: #14142a !important;
+    color: #f0eeff !important;
+  }
+  .mdc-snackbar__surface { border: 1px solid rgba(255,255,255,0.1) !important; }
+}
+
+/* ── Snackbar ──────────────────────────────── */
+.snack-success .mdc-snackbar__surface {
+  background: #1a1a36 !important;
+  color: #f5e642 !important;
+  border: 1px solid rgba(245,230,66,0.3) !important;
+  font-family: 'Outfit', sans-serif;
+}
+.snack-error .mdc-snackbar__surface {
+  background: #1a0a10 !important;
+  color: #ff8080 !important;
+  border: 1px solid rgba(255,68,68,0.3) !important;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── Chip selected (dark) ──────────────────── */
+.mat-mdc-chip.mat-mdc-chip-selected.mat-primary {
+  background-color: #f5e642 !important;
+  color: #080810 !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+}
+
+/* ── Light theme overrides ─────────────────── */
+body:not(.dark-theme) {
+  .mat-mdc-select-panel {
+    background: #ffffff !important;
+    border: 1px solid rgba(139,92,246,0.15);
+    border-radius: 10px !important;
+  }
+  .mat-mdc-option {
+    font-family: 'Outfit', sans-serif;
+    &:hover, &.mat-mdc-option-active { background: rgba(139,92,246,0.07) !important; }
+  }
+  .mat-mdc-chip.mat-mdc-chip-selected.mat-primary {
+    background-color: #8b5cf6 !important;
+    color: white !important;
+  }
+  ::-webkit-scrollbar-track { background: #f7f4ff; }
+  ::-webkit-scrollbar-thumb { background: #d8d0f0; }
+  ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+}
